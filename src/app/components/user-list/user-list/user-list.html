@@ -1,0 +1,11 @@
+<h2>User List</h2>
+
+<p>Selected User: {{ selectedUser() }}</p>
+
+<app-user-card
+  *ngFor="let user of users$ | async"
+  [user]="user"
+  (selectUser)="onUserSelected($event)"
+  (deleteUser)="onUserDelete($event)"
+  >
+</app-user-card>
