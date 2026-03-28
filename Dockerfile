@@ -1,5 +1,5 @@
 # Stage 1: Build the Angular app
-FROM node:18-alpine AS build
+FROM node:22-alpine AS build
 
 WORKDIR /app
 
@@ -17,7 +17,7 @@ RUN npm run build --prod
 FROM nginx:alpine
 
 # Copy the built Angular files to Nginx default location
-COPY --from=build /app/dist/employee_management_21 /usr/share/nginx/html
+COPY --from=build /app/dist/ngrx-signals-demo/browser /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
