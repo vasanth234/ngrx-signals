@@ -11,6 +11,6 @@ import { UserList } from './components/user-list/user-list/user-list';
 export class App {
   protected readonly title = signal('ngrx-signals-demo');
   constructor(){
-    console.log("printederfe")
+    console.log("printeefe")
   }
 }
