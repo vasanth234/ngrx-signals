@@ -1,0 +1,14 @@
+name: hello world
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build app
+        run: echo "build app"
+    steps:
+      - name: test
+        run: echo "test app"
+

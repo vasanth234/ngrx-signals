@@ -4,6 +4,7 @@ import * as UserActions from '../../../store/user.action';
 import { AppState } from '../../../app.state';
 import { UserCard } from '../../user-card/user-card/user-card';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-list',
   imports: [UserCard,CommonModule],
@@ -18,7 +19,7 @@ export class UserList {
 
   users$ = this.store.select(state => state.users.users);
 
-  constructor() {
+  constructor(private router:Router) {
     this.store.dispatch(UserActions.loadUsers());
   }
 
@@ -29,5 +30,7 @@ export class UserList {
   onUserDelete(id:any){
      this.store.dispatch(UserActions.DeleteUsers({id}))
   }
+
+
 
 }
