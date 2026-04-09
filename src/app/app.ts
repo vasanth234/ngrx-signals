@@ -1,6 +1,6 @@
-import { Component, signal } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { catchError, throwError } from 'rxjs';
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Matdialog } from './matdialog/matdialog';
 
 @Component({
   selector: 'app-root',
@@ -8,32 +8,14 @@ import { catchError, throwError } from 'rxjs';
   styleUrl: './app.css'
 })
 export class App {
-  constructor(private http: HttpClient) {}
 
-  id = signal('0');
+  constructor(private dialog: MatDialog) {}
 
-  onDo() {
-    const userId = this.id();
-
-    if (userId === '0') {
-      console.log('User not found');
-      return;
-    }
-
-    this.http
-      .get(`https://jsonplaceholder.typicode.com/users/${userId}`)
-      .pipe(
-        catchError(error => {
-          return throwError(() => new Error('User not found'));
-        })
-      )
-      .subscribe({
-        next: res => {
-          console.log(res);
-        },
-        error: err => {
-          console.log(err.message);
-        }
-      });
+  openDialog() {
+    this.dialog.open(Matdialog, {
+      width: '400px',
+      height:'400px',
+     data:{message:"thus is dialoaf component"}
+    });
   }
 }
